@@ -256,22 +256,22 @@ app.get('/dashboard/patients', async (req, res) => {
 // GET /dashboard/staff
 // Show Appointments Form
 app.get('/dashboard/appointments', (req, res) => {
-  res.render('appointments', { successMsg: null });
+  res.render('appointments.ejs', { successMsg: null });
 });
 
 // Show Admission/Discharge Form
 app.get('/dashboard/admissions', (req, res) => {
-  res.render('admissions', { successMsg: null });
+  res.render('admissions.ejs', { successMsg: null });
 });
 
 // Show Discharge Form
 app.get('/dashboard/discharge', (req, res) => {
-  res.render('discharge', { successMsg: null });
+  res.render('discharge.ejs', { successMsg: null });
 });
 
 // Show Communications Form
 app.get('/dashboard/communications', (req, res) => {
-  res.render('communications', { successMsg: null });
+  res.render('communications.ejs', { successMsg: null });
 });
 
 //message pops
@@ -326,7 +326,7 @@ app.post('/dashboard/communications', async (req, res) => {
 });
 
 app.get('/dashboard/discharge', (req, res) => {
-  res.render('discharge');
+  res.render('discharge.ejs');
 });
 
 //staff pops
