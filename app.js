@@ -27,27 +27,17 @@ app.get('/addtaffs', (req, res) => {
 });
 require('dotenv').config();
 
+const port = process.env.PORT || 504;  // Use Render's port or default to 3000
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
 const dbURI = process.env.MONGODB_URI;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected successfully'))
   .catch((err) => console.log('MongoDB connection error:', err));
-//const MONGO_URL = 'mongodb://localhost:27017/hospitalDB'; // 👈 your DB name
-// Connect to MongoDB
-// mongoose.connect(MONGO_URL, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// })
-// .then(() => {
-//   console.log('✅ Connected to MongoDB hospitalDB');
-// })
-// .catch((err) => {
-//   console.error('❌ MongoDB connection failed:', err);
-// });
-// Start the server
-// app.listen(504, () => {
-//   console.log('Server is live at http://localhost:504');
-// });
+
 app.get('/dashboard/patients/new', (req, res) => {
   console.log(add-patient);
   //res.render('add-patient');
