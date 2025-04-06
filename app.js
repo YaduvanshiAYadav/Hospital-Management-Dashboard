@@ -6,8 +6,8 @@ const path = require('path');
 
 const Finance = require('./FinanceDashboard/Finance');
 const session = require('express-session');
-app.use(session({ secret: 'yourSecretKey', resave: false, saveUninitialized: true }));
 
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
@@ -27,13 +27,11 @@ app.get('/addtaffs', (req, res) => {
 });
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.log('❌ MongoDB connection error:', err));
+const dbURI = process.env.MONGODB_URI;
 
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch((err) => console.log('MongoDB connection error:', err));
 //const MONGO_URL = 'mongodb://localhost:27017/hospitalDB'; // 👈 your DB name
 // Connect to MongoDB
 // mongoose.connect(MONGO_URL, {
